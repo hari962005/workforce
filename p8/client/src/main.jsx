@@ -8,8 +8,8 @@ import { LayoutDashboard, Users, ClipboardCheck, Settings2, UserRound, CalendarD
 import logo from './assets/logo.png';
 import load from './assets/load.png';
 import './styles.css';
-
-const API = 'http://localhost:5000/api'; 
+VITE_API_URL=https://workforce-n49l.onrender.com
+const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({ baseURL: API });
 const FILE_BASE = 'http://localhost:5000';
 api.interceptors.request.use(config => {
