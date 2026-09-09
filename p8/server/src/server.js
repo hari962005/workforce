@@ -115,5 +115,5 @@ app.get('/api/export/employees.pdf',async(_,res)=>{const data=await Employee.fin
 app.use((err,req,res,next)=>{console.error(err);res.status(500).json({error:'Server error'})});
 
 io.on('connection',socket=>socket.emit('connected',{message:'Backbonehub live notifications connected'}));
-const port=process.env.PORT||5000;
+process.env.PORT || 5000
 mongoose.connect(process.env.MONGODB_URI||'mongodb://127.0.0.1:27017/backbonehub').then(async()=>{console.log('MongoDB connected');await removePrototypeData();await seedSystemUsers();await repairLegacyAttendance();console.log('Prototype demo data removed; attendance records checked and legacy times repaired.');http.listen(port,()=>console.log(`Backbonehub API: http://localhost:${port}`));}).catch(err=>{console.error('MongoDB connection failed:',err.message);console.error('Start MongoDB and run npm run server again.');process.exit(1)});
